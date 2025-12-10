@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Die echtere Wirklichkeit – Worksheet & Materialien</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #111827;
+      color: #f9fafb;
+      padding: 10px 16px;
+      box-shadow: 0 1px 4px rgba(15,23,42,0.6);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-right: 10px;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      margin-right: 12px;
+      color: #e5e7eb;
+    }
+    .nav-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 0.4em 0;
+      font-weight: 600;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.7rem;
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.4em;
+    }
+    h3 {
+      font-size: 1rem;
+      margin-top: 1em;
+    }
+    p {
+      margin: 0.2em 0 0.4em 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .section {
+      background: #ffffff;
+      padding: 16px 18px;
+      margin-top: 16px;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(15,23,42,0.12);
+      border: 1px solid #e5e7eb;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    input[type="text"], input[type="date"], textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font: inherit;
+      resize: vertical;
+      background: #ffffff;
+    }
+    textarea {
+      min-height: 110px;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    .quote-box {
+      font-size: 0.8rem;
+      background: #f9fafb;
+      border-left: 3px solid #9ca3af;
+      padding: 6px 10px;
+      margin: 4px 0 8px 0;
+      border-radius: 4px;
+    }
+    .quote-ref {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: help;
+      color: #2563eb;
+      font-size: 0.8rem;
+      margin-left: 4px;
+    }
+    .tooltip .tiptext {
+      visibility: hidden;
+      width: 280px;
+      background-color: #111827;
+      color: #f9fafb;
+      text-align: left;
+      border-radius: 6px;
+      padding: 8px 10px;
+      position: absolute;
+      z-index: 10;
+      top: 130%;
+      left: 0;
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+    .tooltip .tiptext::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 10px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #111827 transparent;
+    }
+    .tooltip:hover .tiptext {
+      visibility: visible;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font: inherit;
+      cursor: pointer;
+      background: #111827;
+      color: #f9fafb;
+      font-size: 0.9rem;
+    }
+    button:hover { filter: brightness(1.05); }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
+
+    @media print {
+      body { background: #ffffff; }
+      .nav { display: none; }
+      .section { box-shadow: none; border-color: #d1d5db; }
+      .buttons { display: none; }
+      .tooltip .tiptext { position: static; visibility: visible; background: none; color: inherit; padding: 0; }
+      .tooltip::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-title">Die echtere Wirklichkeit – Games &amp; Wahrheit</div>
+    <div class="nav-links">
+      <a href="#worksheet">Schüler*innen-Worksheet</a>
+      <a href="#teacher">Lehrpersonen-Version</a>
+      <a href="#spickzettel">Romanstellen-Spickzettel</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCHÜLER*INNEN-WORKSHEET -->
+<div class="wrapper" id="worksheet">
+  <h1>Worksheet – <em>Die echtere Wirklichkeit</em> &amp; Think-Backwards-Game</h1>
+  <p style="text-align:center;font-size:0.9rem;margin-bottom:1em;">
+    Gruppenarbeit (2–3 Personen) · Kapitel 1 «ω.» &amp; Kapitel 2 «ϰ.» · mit Textbelegen aus dem Roman
+  </p>
+
+  <div class="section">
+    <h2>0. Gruppe &amp; Rahmen</h2>
+    <div class="meta-grid">
+      <div>
+        <span class="hint">Gruppenname / Klasse</span>
+        <input type="text" id="groupName" placeholder="z.B. Gruppe 3 – FM1">
+      </div>
+      <div>
+        <span class="hint">Gruppenmitglieder</span>
+        <input type="text" id="members" placeholder="z.B. Lea, Loris, Aylin">
+      </div>
+      <div>
+        <span class="hint">Datum</span>
+        <input type="date" id="date">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>1. Aletheia-These + Textbeleg (Kapitel 1 «ω.»)</h2>
+    <p class="hint">
+      Auftrag: Wählt <strong>eine</strong> Aletheia-These (S. 7–9). Zitiert den genauen Satz, gebt die Seite an und erklärt in max. 3 Sätzen,
+      warum diese These für das Game in Kapitel 2 wichtig ist.
+    </p>
+
+    <div class="quote-box">
+      <strong>Beispiel-Thesen (aus dem Manifest):</strong><br>
+      • „Es gibt nur eine Wahrheit und sie ist absolut …“ (These&nbsp;1, S. 7)<br>
+      • „Wir leben in einem Zeitalter, in dem … das Beharren auf ›der eigenen Wahrheit‹ […] das Zusammenleben zersetzt.“ (These&nbsp;2, S. 7–8)<br>
+      • „Der Konstruktivismus, die Dekonstruktion, der Relativismus […] erklärten Wahrheit zu einem subjektiven Phänomen.“ (These&nbsp;3, S. 8)
+      <div class="quote-ref">
+        Volltext im Roman, Kapitel «ω.» (S. 7–9).
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            In «ω.» formuliert Aletheia u. a.: Es gebe nur eine absolute Wahrheit; der moderne Relativismus mache Wahrheit zu „deiner“ bzw. „meiner“ Wahrheit und zerstöre so den gemeinsamen Boden.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <p class="hint"><strong>Notiert hier:</strong> 1) Wortlaut &amp; Seite der gewählten These · 2) kurze Erklärung · 3) erste Idee, wie die These mit dem Game in Kap. 2 zusammenhängt.</p>
+    <textarea id="aletheia"></textarea>
+  </div>
+
+  <div class="section">
+    <h2>2. Spielmechanik – Analyse eures Schüler*innen-Games</h2>
+    <p class="hint">
+      Auftrag: Beschreibt in drei Punkten, wie euer Game „Wirklichkeit“ konstruiert (Start, Regeln, Entscheidungen) und vergleicht das mit dem Ausgangslevel im Roman (S. 30–32).
+    </p>
+
+    <div class="quote-box">
+      <strong>Romanstelle zum Ausgangslevel:</strong><br>
+      „Da war eine Leiche in einem Labor alter Schule: ein Mann im weißen Kittel, der […] in einer Pfütze lag, die halb aus Blut, halb aus einer transluziden Flüssigkeit zu bestehen schien.“ (S. 30)<br>
+      „All das war gefroren in der Zeit – ein Wimmelbild, in dem man Informationen sammeln konnte …“ (S. 31)
+      <div class="quote-ref">
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Das Ausgangsbild ist wie ein Standbild: Labor, Leiche, verstreute Gegenstände, weitere Räume wie in einem Diorama – alles eingefroren, nur zur Untersuchung da.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <p class="hint"><strong>Notiert hier:</strong> 1) Startbild/Startszene eures Games · 2) wichtigste Regeln · 3) Art der Entscheidungen + Vergleich mit der Labor-Szene im Roman.</p>
+    <textarea id="mechanik"></textarea>
+  </div>
+
+  <div class="section">
+    <h2>3. Aufgaben mit Romanstellen</h2>
+
+    <h3>A) Ausgangslevel ↔ Roman (S. 30–32)</h3>
+    <p class="hint">
+      1. Beschreibt euer Startlevel genau. 2. Sucht drei Elemente (z.B. Figuren, Objekte, Räume), die an das Labor-Wimmelbild erinnern.
+      3. Ordnet jedem Element eine passende Romanstelle (Kurzzitat + Seite) zu.
+    </p>
+    <div class="quote-box">
+      <strong>Romananker:</strong><br>
+      • „Ein Schnitt durch das restliche Haus erlaubte […] in andere Räume zu sehen wie in einem Diorama.“ (S. 31)<br>
+      • „Auf dem Gang standen zwei sich unterhaltende, Zigaretten anzündende Frauen …“ (S. 31)<br>
+      • „Man sah bei jenen Zooms in die Charaktere auch, was jeder dabeihatte …“ (S. 31)
+      <div class="quote-ref">
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Das Ausgangslevel zeigt mehrere Räume und Figuren gleichzeitig. Durch Klicken erfährt man Details: Dialoge, Schulden, Gegenstände wie Dienstliste oder Geldumschlag.
+          </span>
+        </span>
+      </div>
+    </div>
+    <textarea id="aufgabeA" placeholder="Element 1 im Game → Romanstelle (Zitat + Seite) → kurzer Vergleich …"></textarea>
+
+    <h3>B) Hinweise &amp; Indizien (S. 33–34)</h3>
+    <p class="hint">
+      1. Findet in eurem Game drei Hinweise, die den Spielfortschritt steuern. 2. Verknüpft jeden Hinweis mit einer Romanstelle zur Indizien-Logik.
+      3. Ergänzt jeweils: „Im Game funktioniert dieser Hinweis ähnlich / anders, weil …“
+    </p>
+    <div class="quote-box">
+      <strong>Romananker zur Indizien-Mechanik:</strong><br>
+      „Unter einem Think-Backwards-Game versteht man ein Spiel, in dem […] die Zeit selbst [Modulatorin] ist. Man spielt Ursache und Wirkung, und zwar rückwärts.“ (S. 33)<br>
+      „Solche Hinweise können etwa sein: Papierstücke, Briefe, Karten, die Positionen von Menschen, Dinge, die die Leute mithaben und andere stumme Hinterlassenschaften.“ (S. 33)
+      <div class="quote-ref">
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Hinweise im TBG sind stumme Spuren: Positionen, Gegenstände, Dokumente. Aus ihnen muss rückwärts eine plausible Geschichte konstruiert werden, ohne die Szene selbst zu verändern.
+          </span>
+        </span>
+      </div>
+    </div>
+    <textarea id="aufgabeB" placeholder="Hinweis 1 → Romanstelle → Erklärungssatz …"></textarea>
+
+    <h3>C) Zeitlogik rückwärts (S. 33–34)</h3>
+    <p class="hint">
+      1. Wählt eine Entscheidung in eurem Game, die den Ablauf verändert. 2. Beschreibt, wie ihr rückwärts denken müsst.
+      3. Belegt das mit einer Romanstelle, die die rückwärts gerichtete Zeitlogik erklärt. 4. Formuliert einen gemeinsamen Satz: „Beide zeigen, dass …“
+    </p>
+    <div class="quote-box">
+      <strong>Romananker zur Zeitlogik:</strong><br>
+      „Das Ziel eines TBG ist es, herauszufinden, wie es zu einer Situation gekommen ist, also rückwärts von der Anschauung zum Grund zu kommen …“ (S. 33)<br>
+      „Wird der Hergang des Verbrechens […] richtig benannt, springt der Spieler ein Stück zurück in die Vergangenheit der Geschichte …“ (S. 33–34)
+      <div class="quote-ref">
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Im TBG geht man von der fertigen Szene rückwärts zum Grund. Richtige Rekonstruktion lässt den Spieler in ein früheres Zeitfenster „zurückspringen“, wo eine neue Szene wartet.
+          </span>
+        </span>
+      </div>
+    </div>
+    <textarea id="aufgabeC"></textarea>
+
+    <h3>D) Aha-Momente / Test-Cases</h3>
+    <p class="hint">
+      1. Sucht in eurem Game einen Moment, in dem plötzlich klar wird, warum vorher etwas nicht funktioniert hat. 2. Beschreibt diese Szene.
+      3. Verknüpft sie mit der Idee der „Test-Cases“ im Roman: gut konstruierte Erklärungen, die wie eine einzig richtige Lösung wirken.
+    </p>
+    <div class="quote-box">
+      <strong>Romananker zu „Test-Cases“ &amp; Plausibilität:</strong><br>
+      Die Erzählerin beschreibt später, dass ein TBG die Plausibilität „vortäuschen“ müsse wie ein guter Krimi und den Eindruck einer einzigen richtigen Erklärung erzeuge (Reflexion zu Capricorn im späteren Romanteil).
+      <div class="quote-ref">
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Die Spieler sollen das Gefühl haben, eine zwingende, einzige Lösung gefunden zu haben – obwohl es theoretisch andere, ähnlich plausible Erklärungen geben könnte.
+          </span>
+        </span>
+      </div>
+    </div>
+    <textarea id="aufgabeD"></textarea>
+  </div>
+
+  <div class="section">
+    <h2>4. Vergleich Aletheia ↔ Roman (Kap. 1 &amp; 2) ↔ Game</h2>
+    <p class="hint">
+      Auftrag: Wählt eine Aletheia-These, eine passende Stelle aus Kapitel 1 (politische / mediale Debatte) und eine Stelle aus Kapitel 2 (Game).
+      Fasst in genau 4 Sätzen zusammen:
+      1) Was sagt die These? 2) Wie zeigt Kap. 1 dasselbe Problem? 3) Wie modelliert Kap. 2 es im Game? 4) Was bedeutet das für euer Schüler*innen-Game?
+    </p>
+    <div class="quote-box">
+      <strong>Romananker Kapitel 1 (Beispiel):</strong><br>
+      Bernward klagt darüber, dass Medien als „Lügenpresse“ diffamiert werden, während Algorithmen kontroverse, oft falsche Meldungen bevorzugen – verschiedene „Wahrheiten“ konkurrieren (Rede Aletheia, Manifest-Passage).<br>
+      <div class="quote-ref">
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            In der Aletheia-Rede wird beschrieben, wie Verschwörungstheorien, Algorithmen und alternative Fakten die Öffentlichkeit so verzerren, dass mehrere konkurrierende Wirklichkeiten entstehen.
+          </span>
+        </span>
+      </div>
+    </div>
+    <textarea id="vergleich"></textarea>
+  </div>
+
+  <div class="section">
+    <h2>5. Fazit der Gruppe</h2>
+    <p class="hint">
+      Beantwortet in 5–6 Sätzen:
+      1) Welche „Wahrheit“ zeigt euer Game? 2) Welche Wahrheitssicht zeigt der Roman?
+      3) Wo stimmen Game und Roman überein? 4) Wo widersprechen sie sich?
+      5) Welche Romanstelle fasst eure Erkenntnis am besten zusammen?
+    </p>
+    <textarea id="fazit"></textarea>
+  </div>
+
+  <div class="section">
+    <h2>6. Gruppenprotokoll (für Abgabe / PDF)</h2>
+    <p class="hint">
+      Übertragt hier eure wichtigsten Ergebnisse in zusammenhängender Form (kann stichwortartig sein). Dieses Feld wird für den PDF-Export verwendet.
+    </p>
+    <textarea id="summary" placeholder="Kurzes Protokoll eurer Gruppe …"></textarea>
+  </div>
+
+  <div class="buttons">
+    <button type="button" onclick="exportPDF()">Worksheet als PDF herunterladen</button>
+  </div>
+</div>
+
+<!-- LEHRPERSONEN-VERSION -->
+<div class="wrapper" id="teacher">
+  <h1>Lehrpersonen-Version – Erwartungshorizont</h1>
+  <p>
+    Dieses Kapitel beschreibt einen möglichen Erwartungshorizont für die Gruppenarbeit zum Roman
+    <em>Die echtere Wirklichkeit</em> (Kapitel «ω.» und «ϰ.») und die Schüler*innen-Games.
+  </p>
+
+  <div class="section">
+    <h2>1. Aletheia-These + Textbeleg</h2>
+    <p><strong>Sehr gut (5–6 / 6):</strong> Präzise Auswahl einer passenden These; korrektes, knappes Zitat mit Seitenangabe; eigenständige, verständliche Erklärung der These in Bezug auf Wahrheit / Relativismus; überzeugende erste Verknüpfung mit der Spielwelt.</p>
+    <p><strong>Genügend (4 / 6):</strong> Eine These ist erkennbar; Zitat oder Seitenangabe teilweise ungenau; Erklärung bleibt allgemein, aber inhaltlich nicht falsch.</p>
+    <p><strong>Ungenügend (≤3 / 6):</strong> Keine klare These, kein belegter Textverweis oder reine Nacherzählung ohne Bezug zum Wahrheitsproblem.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Spielmechanik – Analyse des Schüler*innen-Games</h2>
+    <p><strong>Sehr gut:</strong> Das Game wird strukturiert beschrieben (Start, Regeln, Entscheidungslogik); die Labor-Szene (Ausgangslevel) wird gezielt als Vergleich genutzt; Gemeinsamkeiten und Unterschiede der Wirklichkeitskonstruktion sind begründet herausgearbeitet.</p>
+    <p><strong>Genügend:</strong> Grundlegende Beschreibung des Spiels; einzelne Bezüge zur Labor-Szene vorhanden, aber eher aufzählend als analysierend.</p>
+    <p><strong>Ungenügend:</strong> Nur Gameplay-Features beschrieben; Romanbezug kaum oder gar nicht vorhanden.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Aufgaben A–D mit Romanstellen</h2>
+    <h3>A) Ausgangslevel ↔ Roman</h3>
+    <p><strong>Sehr gut:</strong> Drei klar benannte Elemente im Game; je ein sinnvoll gewähltes Kurzzitat aus der Labor-Passage mit Seite; Vergleich zeigt, wie beide Texte mit Standbild / Diorama-Logik arbeiten.</p>
+    <p><strong>Genügend:</strong> 2–3 Elemente erkennbar; Zitate oder Seitenangaben teilweise unpräzise; Vergleich eher knapp, aber nachvollziehbar.</p>
+
+    <h3>B) Hinweise &amp; Indizien</h3>
+    <p><strong>Sehr gut:</strong> Drei Game-Hinweise (z.B. Objekte, Positionen, Dialoge) werden jeweils mit der Indizien-Logik des TBG gedeckt; kurze, treffende Sätze zur Ähnlichkeit oder Differenz.</p>
+    <p><strong>Genügend:</strong> Hinweise werden beschrieben, aber Romanstellen sind nur grob zugeordnet; Reflexion bleibt oberflächlich.</p>
+
+    <h3>C) Zeitlogik rückwärts</h3>
+    <p><strong>Sehr gut:</strong> Entscheidung im Game wird klar benannt; Rückwärtsdenken als Denkbewegung wird begriffen; Romanstelle zur Zeitlogik ist passend; gemeinsamer Satz fasst das Prinzip der rückwärts gerichteten Kausalität klar zusammen.</p>
+
+    <h3>D) Aha-Momente / Test-Cases</h3>
+    <p><strong>Sehr gut:</strong> Konkrete Game-Szene als „Aha-Moment“ erkennbar; Verbindung zur Idee der Test-Cases (Schein von Eindeutigkeit) ist argumentativ aufgebaut, nicht nur behauptet.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Vergleich Aletheia ↔ Roman ↔ Game</h2>
+    <p><strong>Sehr gut:</strong> Vier Sätze klar erkennbar strukturiert; These wird in eigenen Worten korrekt wiedergegeben; Kap. 1 und Kap. 2 werden als unterschiedliche, aber verknüpfte Ebenen der Wahrheitsproblematik verstanden (politischer Diskurs vs. Spielmechanik); das Schüler*innen-Game wird sinnvoll eingeordnet.</p>
+    <p><strong>Genügend:</strong> Vergleich bleibt an der Oberfläche, aber Bezug zu These und Romanstellen ist erkennbar.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Fazit</h2>
+    <p><strong>Sehr gut:</strong> Die Gruppe formuliert eine klare, reflektierte Position zur Frage „Wie echt ist Wirklichkeit?“ im Roman und in ihrem Game; mindestens eine Romanstelle wird als Leitstelle sinnvoll eingesetzt.</p>
+  </div>
+
+  <div class="section">
+    <h2>6. Mögliche Gewichtung</h2>
+    <ul>
+      <li>Teil 1 (Aletheia-These): 15&nbsp;%</li>
+      <li>Teil 2 (Spielmechanik): 20&nbsp;%</li>
+      <li>Teil 3 (Aufgaben A–D, inkl. Belegstellen): 35&nbsp;%</li>
+      <li>Teil 4 (Vergleich): 20&nbsp;%</li>
+      <li>Teil 5 (Fazit): 10&nbsp;%</li>
+    </ul>
+    <p>Je nach Niveau der Klasse kann die Gewichtung angepasst und z.B. der Romanbezug stärker gewichtet werden.</p>
+  </div>
+</div>
+
+<!-- SPICKZETTEL -->
+<div class="wrapper" id="spickzettel">
+  <h1>Romanstellen – Spickzettel mit Tooltips</h1>
+  <p>Diese Übersicht kann parallel zum Worksheet genutzt werden. Die wichtigsten Passagen sind mit kurzen Stichworten und Tooltips versehen.</p>
+
+  <div class="section">
+    <h2>Kapitel «ω.» – Manifest der Gruppe Aletheia</h2>
+    <ul>
+      <li>
+        <strong>These 1 – absolute Wahrheit</strong>
+        <span class="tag">S. 7</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Aletheia behauptet, es gebe nur eine absolute Wahrheit, die jenseits aller Meinungen existiere, auch wenn Menschen sie nur unvollständig erkennen können.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>These 2 – „eigene Wahrheit“</strong>
+        <span class="tag">S. 7–8</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Kritisiert wird ein Zeitalter der „eigenen Wahrheit“, in dem subjektive Wahrheitsansprüche das Zusammenleben zersetzen und die Vernunft schwächen.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>These 3 – Relativismus</strong>
+        <span class="tag">S. 8</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Relativismus und Dekonstruktion werden dafür verantwortlich gemacht, Wahrheit zu einem bloß subjektiven Phänomen zu erklären und damit zu entwerten.
+          </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Kapitel «ϰ.» – Think-Backwards-Game</h2>
+    <ul>
+      <li>
+        <strong>Ausgangslevel – Labor</strong>
+        <span class="tag">S. 30–31</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Szenenbild: Leiche im Laborkittel in Flüssigkeit, verwüstete Arbeitsfläche, weitere Räume wie in einem Diorama, Figuren mit eigenen Mini-Geschichten.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>Wimmelbild-Struktur</strong>
+        <span class="tag">S. 31</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Das Bild ist „gefroren in der Zeit“: ein Wimmelbild, in dem man Informationen sammelt, ohne die Szene direkt verändern zu können.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>Definition TBG</strong>
+        <span class="tag">S. 33</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Think-Backwards-Game: Die Zeit ist Modulatorin. Man spielt Ursache und Wirkung rückwärts, um vom fertigen Bild zum Hergang zu gelangen.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>Hinweise / Indizien</strong>
+        <span class="tag">S. 33</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Hinweise sind stumme Spuren: Papier, Briefe, Karten, Positionen, mitgeführte Objekte. Aus ihnen wird eine plausible Geschichte konstruiert.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>Rücksprung in die Vergangenheit</strong>
+        <span class="tag">S. 33–34</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Wenn der Hergang korrekt benannt wird, springt der Spieler ein Stück zurück in die Vergangenheit und sieht eine neue Szene desselben Falls.
+          </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Weitere Reflexionen (spätere Kapitel)</h2>
+    <ul>
+      <li>
+        <strong>Kausalität &amp; Capricorn</strong>
+        <span class="tag">späterer Romanteil</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Die Erzählerin verbindet Evolutionsbiologie und Kausalitätsdenken: Wirklichkeit und Urteilen erscheinen als Teil leiblicher, biologischer Entwicklung – nicht als reine Abstraktion.
+          </span>
+        </span>
+      </li>
+      <li>
+        <strong>Test-Cases &amp; falsche Eindeutigkeit</strong>
+        <span class="tag">späterer Romanteil</span>
+        <span class="tooltip">ⓘ
+          <span class="tiptext">
+            Ein TBG soll den Eindruck erzeugen, es gebe nur eine zwingende Lösung, obwohl theoretisch mehrere Erklärungen möglich wären – ein Spiel mit vermeintlicher Eindeutigkeit.
+          </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function exportPDF() {
+  const element = document.getElementById('worksheet');
+  const groupName = document.getElementById('groupName').value || 'gruppe';
+  const date = document.getElementById('date').value || 'datum';
+  const opt = {
+    margin:       10,
+    filename:     'worksheet_enhanced_' + groupName + '_' + date + '.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2 },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(element).save();
+}
+</script>
+</body>
+</html>
