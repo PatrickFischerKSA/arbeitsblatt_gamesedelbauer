@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Worksheet – Think-Backwards + Romanstellen</title>
+<style>
+body { font-family: system-ui, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+h1, h2 { text-align: center; }
+.section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
+textarea { width: 100%; min-height: 120px; padding: 10px; border-radius: 6px; border: 1px solid #ccc; resize: vertical; background: #fff; }
+button { padding: 10px 15px; border: none; border-radius: 6px; background: #2c3e50; color: white; cursor: pointer; margin-right: 10px; }
+button:hover { background: #1a252f; }
+#summary { min-height: 200px; }
+</style>
+</head>
+
+<body>
+
+<h1>Gruppenarbeit (2–3 Personen) – Roman *Die echtere Wirklichkeit* + Think-Backwards-Mechanik</h1>
+<h2>Version mit Textbelegen</h2>
+
+<div class="section">
+  <h3>Gruppe</h3>
+  <input id="groupName" placeholder="Gruppenname" style="width: 40%; padding: 8px;">
+  <input id="date" type="date" style="padding: 8px;">
+</div>
+
+<div class="section">
+  <h2>1. Zentrale Aletheia-These + Textbeleg</h2>
+  <textarea id="aletheia"></textarea>
+</div>
+
+<div class="section">
+  <h2>2. Spielmechanik – Analyse</h2>
+  <textarea id="mechanik"></textarea>
+</div>
+
+<div class="section">
+  <h2>3. Aufgaben mit Romanstellen</h2>
+  <textarea id="aufgabeA"></textarea>
+  <textarea id="aufgabeB"></textarea>
+  <textarea id="aufgabeC"></textarea>
+  <textarea id="aufgabeD"></textarea>
+</div>
+
+<div class="section">
+  <h2>4. Vergleich</h2>
+  <textarea id="vergleich"></textarea>
+</div>
+
+<div class="section">
+  <h2>5. Fazit</h2>
+  <textarea id="fazit"></textarea>
+</div>
+
+<div class="section">
+  <h2>Gruppenprotokoll</h2>
+  <textarea id="summary"></textarea>
+</div>
+
+<button onclick="generateSummary()">Protokoll erstellen / aktualisieren</button>
+<button onclick="exportPDF()">PDF herunterladen</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+function generateSummary() {
+  const fields = [
+    ["Aletheia-These", "aletheia"],
+    ["Spielmechanik – Analyse", "mechanik"],
+    ["Aufgabe A", "aufgabeA"],
+    ["Aufgabe B", "aufgabeB"],
+    ["Aufgabe C", "aufgabeC"],
+    ["Aufgabe D", "aufgabeD"],
+    ["Vergleich", "vergleich"],
+    ["Fazit", "fazit"]
+  ];
+
+  let txt = "Gruppe: " + document.getElementById("groupName").value + "\n";
+  txt += "Datum: " + document.getElementById("date").value + "\n\n";
+
+  fields.forEach(([label, id]) => {
+    txt += label + ":\n";
+    txt += document.getElementById(id).value + "\n\n";
+  });
+
+  document.getElementById("summary").value = txt;
+}
+
+function exportPDF() {
+  const content = document.getElementById("summary").value;
+  if (!content.trim()) {
+    alert("Bitte zuerst das Protokoll erstellen.");
+    return;
+  }
+
+  const box = document.createElement("div");
+  box.style.whiteSpace = "pre-wrap";
+  box.style.padding = "20px";
+  box.style.fontFamily = "Arial";
+  box.style.fontSize = "12pt";
+  box.textContent = content;
+
+  const filename =
+    "protokoll_" +
+    (document.getElementById("groupName").value || "gruppe") +
+    "_" +
+    (document.getElementById("date").value || "datum") +
+    ".pdf";
+
+  html2pdf().from(box).save(filename);
+}
+</script>
+
+</body>
+</html>
